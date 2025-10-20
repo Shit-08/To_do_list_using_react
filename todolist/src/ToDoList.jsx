@@ -8,10 +8,14 @@ export function ToDoList() {
   let [newTask, setNewTask] = useState("");
 
   let updateToDoList = () => {
-    setToDoArr((prevToDos) => {
-      return [...prevToDos, { task: newTask, id: uuidv4(), isDone: false }];
-    });
-    setNewTask("");
+    if (newTask.trim() !== "") {
+      setToDoArr((prevToDos) => {
+        return [...prevToDos, { task: newTask, id: uuidv4(), isDone: false }];
+      });
+      setNewTask("");
+    } else {
+      alert("Please enter a task");
+    }
   };
 
   let deleteToDo = (id) => {
